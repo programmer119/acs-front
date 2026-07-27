@@ -1,6 +1,6 @@
 # Accident Content Studio Proposal Landing
 
-Static deployment package for a proposal download page and a clickable future web-admin concept.
+Static deployment package for the Accident Content Studio proposal and download page.
 
 ## Local preview
 
@@ -30,7 +30,6 @@ When the signed Windows installer is ready:
 ## Pages
 
 - `index.html`: proposal, desktop-program preview, implemented scope, download
-- `admin.html`: future multi-PC web administration concept; clearly marked as outside the current first-stage scope
 
 ## Brand note
 
@@ -55,3 +54,10 @@ window.ACS_CONFIG = Object.freeze({
 - 저장소 내부 파일: `downloads/파일명.zip`
 - GitHub Releases 등 외부 파일: 전체 HTTPS URL
 - `index.html`을 수정할 필요가 없습니다.
+
+
+## 다운로드 기록
+
+- GitHub Pages만으로는 누가 다운로드했는지 확인할 수 없습니다.
+- `tracking/google-apps-script/`의 스크립트를 Google Sheet에 배포한 뒤 `assets/config.js`에 URL을 설정하면 이름/회사명과 다운로드 횟수를 기록할 수 있습니다.
+- 기록 기능을 켜면 사용자는 다운로드 전에 이름 또는 회사명을 입력하고 저장 동의 항목을 확인합니다.

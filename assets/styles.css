@@ -489,3 +489,106 @@ kbd { padding: 3px 6px; border: 1px solid #d0d5dd; border-bottom-width: 2px; bor
 .footer-brand { display:flex; align-items:flex-start; gap:12px; }
 .footer-brand > img { width:38px; height:38px; flex:0 0 auto; }
 .footer-brand > div { min-width:0; }
+
+
+/* Prominent download CTA */
+.download-cta-primary {
+  min-height: 76px;
+  width: min(100%, 520px);
+  padding: 13px 30px;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 15px;
+  box-shadow: 0 18px 42px rgba(37,99,235,.30), 0 4px 12px rgba(37,99,235,.18);
+}
+.download-cta-primary span, .download-cta-bottom span { font-size: 19px; font-weight: 900; letter-spacing: -.025em; }
+.download-cta-primary strong, .download-cta-bottom strong { font-size: 11px; font-weight: 750; opacity: .82; letter-spacing: .03em; }
+.download-cta-primary:hover { transform: translateY(-2px); box-shadow: 0 22px 48px rgba(37,99,235,.36), 0 6px 14px rgba(37,99,235,.20); }
+.download-cta-bottom {
+  min-height: 76px;
+  min-width: 290px;
+  padding: 13px 28px;
+  flex-direction: column;
+  border-radius: 14px;
+  box-shadow: 0 16px 36px rgba(37,99,235,.28);
+}
+
+/* Windows install guide */
+.install-guide-section { background: #fff; }
+.install-heading { align-items: end; }
+.install-guide-card {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: minmax(310px,.72fr) minmax(520px,1.28fr);
+  gap: 28px;
+  align-items: center;
+  border: 1px solid #d9e2f0;
+  border-radius: 20px;
+  background: linear-gradient(145deg,#f8fbff,#fff 48%,#f4f8ff);
+  box-shadow: var(--shadow-md);
+}
+.install-steps { display: flex; flex-direction: column; gap: 13px; }
+.install-steps article {
+  padding: 17px;
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 13px;
+  border: 1px solid #dde5f1;
+  border-radius: 13px;
+  background: rgba(255,255,255,.9);
+}
+.install-steps article > span {
+  width: 42px; height: 42px; display: grid; place-items: center;
+  border-radius: 12px; color: #fff; background: var(--blue);
+  font-weight: 900; box-shadow: 0 8px 18px rgba(37,99,235,.22);
+}
+.install-steps strong { display: block; margin: 1px 0 6px; font-size: 16px; }
+.install-steps p { margin: 0; color: #5b6678; font-size: 13px; line-height: 1.65; }
+.install-steps code { padding: 2px 6px; border-radius: 5px; color: #1849a9; background: #edf4ff; font-size: 11px; }
+.install-steps aside { padding: 15px 16px; border-left: 4px solid #f79009; border-radius: 9px; background: #fff8e7; }
+.install-steps aside strong { color: #93370d; font-size: 13px; }
+.install-steps aside p { margin-top: 5px; color: #7a2e0e; font-size: 11px; }
+.install-guide-image { margin: 0; overflow: hidden; border: 1px solid #cbd7e8; border-radius: 15px; background: #fff; box-shadow: 0 16px 32px rgba(16,24,40,.12); }
+.install-guide-image img { width: 100%; height: auto; }
+.install-guide-image figcaption { padding: 11px 14px; color: #475467; background: #f8fafc; border-top: 1px solid #e4e7ec; font-size: 12px; text-align: center; font-weight: 750; }
+
+/* Download identity tracking modal */
+.download-modal { position: fixed; inset: 0; z-index: 3000; display: none; align-items: center; justify-content: center; padding: 20px; }
+.download-modal.open { display: flex; }
+.download-modal-backdrop { position: absolute; inset: 0; background: rgba(9,16,29,.68); backdrop-filter: blur(5px); }
+.download-modal-panel {
+  position: relative; z-index: 1; width: min(100%, 510px); padding: 30px;
+  border: 1px solid rgba(255,255,255,.22); border-radius: 20px;
+  background: #fff; box-shadow: 0 30px 90px rgba(0,0,0,.34);
+}
+.download-modal-close { position: absolute; top: 13px; right: 14px; width: 38px; height: 38px; border: 0; border-radius: 10px; color: #475467; background: #f2f4f7; cursor: pointer; font-size: 25px; }
+.download-modal-eyebrow { color: #31548c; font-size: 10px; font-weight: 850; letter-spacing: .14em; }
+.download-modal-panel h2 { margin: 9px 0 10px; font-size: 26px; letter-spacing: -.035em; }
+.download-modal-panel > p { color: #667085; line-height: 1.65; font-size: 13px; }
+.download-modal-panel form { display: flex; flex-direction: column; gap: 13px; margin-top: 20px; }
+.download-modal-panel label { color: #344054; font-size: 12px; font-weight: 750; }
+.download-modal-panel label > input:not([type="checkbox"]) { width: 100%; min-height: 48px; margin-top: 7px; padding: 0 13px; border: 1px solid #d0d5dd; border-radius: 10px; outline: 0; }
+.download-modal-panel label > input:not([type="checkbox"]):focus { border-color: #84adff; box-shadow: 0 0 0 4px rgba(37,99,235,.10); }
+.download-consent { display: flex; align-items: flex-start; gap: 9px; line-height: 1.55; font-weight: 550 !important; }
+.download-consent input { margin-top: 3px; }
+.download-modal-submit { min-height: 58px; margin-top: 3px; font-size: 16px; }
+.download-modal-note { margin: 14px 0 0; color: #98a2b3 !important; font-size: 10px !important; }
+body.modal-open { overflow: hidden; }
+
+@media (max-width: 900px) {
+  .install-guide-card { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+  .hero-actions, .hero-actions .download-cta-primary { width: 100%; }
+  .download-cta-primary { min-height: 72px; padding-inline: 22px; }
+  .download-cta-bottom { width: 100%; min-width: 0; }
+  .install-guide-card { padding: 14px; gap: 18px; }
+  .install-steps article { grid-template-columns: 36px 1fr; padding: 13px; }
+  .install-steps article > span { width: 36px; height: 36px; }
+  .download-modal-panel { padding: 25px 19px 20px; }
+}
+
+/* R33 proposal visibility cleanup: keep the interactive product preview in source, but hide it from the public page. */
+.product-stage[hidden] { display: none !important; }
+.hero-grid.hero-grid-no-preview { grid-template-columns: minmax(0, 900px); justify-content: center; }
+.hero-grid-no-preview .hero-copy { width: 100%; max-width: 900px; margin-inline: auto; }

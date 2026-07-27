@@ -5,7 +5,6 @@ Date: 2026-07-27
 ## Package scope
 
 - Static proposal and download page: `index.html`
-- Clickable future web-admin concept: `admin.html`
 - Embedded R33 Windows project and SHA-256
 - Responsive CSS and vanilla JavaScript; no external runtime dependency
 - Exact SuaveForge final-logo geometry applied as transparent light/dark/brand variants
@@ -19,7 +18,6 @@ Date: 2026-07-27
 - Embedded R33 ZIP integrity (`unzip -t`): PASS
 - Official-logo SVG render with Inkscape: PASS
 - Transparent raster corners and identical alpha geometry: PASS
-- Local HTTP response for `index.html`, `admin.html`, and download file: PASS
 
 ## Browser-render note
 
