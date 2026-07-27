@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="사고 콘텐츠 스튜디오 향후 웹 통합관리 화면 예시">
+  <meta name="theme-color" content="#111827">
+  <title>웹 통합관리 예시 | 사고 콘텐츠 스튜디오</title>
+  <link rel="icon" type="image/png" href="assets/suaveforge-logo-brand-256.png">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body class="admin-body">
+  <div class="admin-banner"><strong>향후 확장 예시</strong><span>현재 1차 Windows 개발 범위에는 포함되지 않는 제안용 웹 관리자 화면입니다.</span><a href="index.html">제안 페이지로 돌아가기</a></div>
+  <div class="admin-shell">
+    <aside class="admin-sidebar">
+      <a class="admin-brand" href="index.html"><img src="assets/suaveforge-logo-light.svg" alt=""><span><span class="brand-word">SuaveForge</span><small>ACS CONTROL</small></span></a>
+      <nav id="adminNav">
+        <button class="active" data-admin-page="overview"><span>01</span>운영 현황</button>
+        <button data-admin-page="devices"><span>02</span>PC 관리</button>
+        <button data-admin-page="contents"><span>03</span>콘텐츠 이력</button>
+        <button data-admin-page="schedules"><span>04</span>스케줄</button>
+        <button data-admin-page="prompts"><span>05</span>프롬프트</button>
+        <button data-admin-page="reviews"><span>06</span>사진 검수</button>
+        <button data-admin-page="logs"><span>07</span>오류 로그</button>
+      </nav>
+      <div class="admin-user"><span><img src="assets/suaveforge-logo-light.svg" alt=""></span><div><strong>운영 관리자</strong><small>proposal@suaveforge</small></div></div>
+    </aside>
+    <main class="admin-main">
+      <header class="admin-topbar"><div><small>ACCIDENT CONTENT STUDIO</small><h1 id="adminTitle">운영 현황</h1></div><div class="admin-top-actions"><label class="search-box">⌕<input id="globalSearch" placeholder="전체 검색"></label><button type="button" id="refreshAdmin">새로고침</button><span class="live-chip"><i></i>LIVE</span></div></header>
+
+      <section class="admin-page active" data-admin-view="overview">
+        <div class="admin-metrics"><article><span>연결된 PC</span><strong>6 <small>/ 6</small></strong><em class="good">모두 정상</em></article><article><span>오늘 생성</span><strong>124</strong><em>전일 대비 +18%</em></article><article><span>검수 대기</span><strong>7</strong><em class="warn">확인 필요</em></article><article><span>실패 작업</span><strong>0</strong><em class="good">정상 운영</em></article></div>
+        <div class="admin-two-col">
+          <section class="admin-card"><div class="admin-card-head"><div><span>최근 7일</span><h2>콘텐츠 생성 추이</h2></div><select><option>전체 PC</option><option>부산 운영팀</option></select></div><div class="bar-chart" aria-label="최근 7일 콘텐츠 생성량"><div><i style="height:45%"></i><span>월</span></div><div><i style="height:59%"></i><span>화</span></div><div><i style="height:54%"></i><span>수</span></div><div><i style="height:72%"></i><span>목</span></div><div><i style="height:66%"></i><span>금</span></div><div><i style="height:88%"></i><span>토</span></div><div><i style="height:78%"></i><span>일</span></div></div></section>
+          <section class="admin-card"><div class="admin-card-head"><div><span>실시간</span><h2>작업 상태</h2></div><button>전체 보기</button></div><div class="status-list"><div><b class="green"></b><span><strong>부산-01</strong><small>콘텐츠 생성 대기</small></span><em>정상</em></div><div><b class="blue"></b><span><strong>부산-02</strong><small>OpenAI 응답 처리 중 · 68%</small></span><em>생성 중</em></div><div><b class="orange"></b><span><strong>검수-PC</strong><small>사진 7건 검수 대기</small></span><em>확인 필요</em></div><div><b class="green"></b><span><strong>야간-자동화</strong><small>다음 실행 23:10</small></span><em>예약됨</em></div></div></section>
+        </div>
+        <section class="admin-card"><div class="admin-card-head"><div><span>최근 작업</span><h2>콘텐츠 생성 이력</h2></div><button data-admin-jump="contents">이력 전체 보기</button></div><div class="data-table"><div class="data-row head"><span>시각</span><span>PC</span><span>제목</span><span>지역 / 키워드</span><span>상태</span></div><div class="data-row searchable"><span>15:12</span><strong>부산-01</strong><span>부산 사상구 교통사고 처리 절차 안내</span><span>사상구 / 사고 처리</span><em class="badge success">완료</em></div><div class="data-row searchable"><span>14:48</span><strong>부산-02</strong><span>사고 사진 개인정보 보호와 모자이크 방법</span><span>부산 / 개인정보</span><em class="badge progress">생성 중</em></div><div class="data-row searchable"><span>14:03</span><strong>야간-자동화</strong><span>사고 현장에서 확인해야 할 필수 정보</span><span>사상구 / 현장 대응</span><em class="badge success">완료</em></div></div></section>
+      </section>
+
+      <section class="admin-page" data-admin-view="devices">
+        <div class="page-tools"><div><button class="active">전체 6</button><button>정상 5</button><button>확인 필요 1</button></div><button class="primary-action">PC 등록</button></div>
+        <div class="device-grid"><article class="searchable"><div class="device-head"><span class="device-icon">PC</span><em class="badge success">온라인</em></div><h3>부산-01</h3><p>Windows 11 Pro · 192.168.0.21</p><dl><div><dt>현재 작업</dt><dd>대기</dd></div><div><dt>오늘 생성</dt><dd>31건</dd></div><div><dt>마지막 동기화</dt><dd>방금 전</dd></div></dl><button>상세 보기</button></article><article class="searchable"><div class="device-head"><span class="device-icon">PC</span><em class="badge progress">작업 중</em></div><h3>부산-02</h3><p>Windows 11 Pro · 192.168.0.22</p><dl><div><dt>현재 작업</dt><dd>AI 생성 68%</dd></div><div><dt>오늘 생성</dt><dd>27건</dd></div><div><dt>마지막 동기화</dt><dd>1분 전</dd></div></dl><button>상세 보기</button></article><article class="searchable"><div class="device-head"><span class="device-icon">PC</span><em class="badge warning">검수 대기</em></div><h3>검수-PC</h3><p>Windows 10 Pro · 192.168.0.31</p><dl><div><dt>현재 작업</dt><dd>사진 검수</dd></div><div><dt>대기 사진</dt><dd>7건</dd></div><div><dt>마지막 동기화</dt><dd>3분 전</dd></div></dl><button>사진 검수 열기</button></article></div>
+      </section>
+
+      <section class="admin-page" data-admin-view="contents">
+        <div class="page-tools"><div class="inline-filters"><input id="contentSearch" placeholder="제목·지역·키워드 검색"><select id="contentStatus"><option value="all">전체 상태</option><option value="완료">완료</option><option value="생성 중">생성 중</option><option value="실패">실패</option></select></div><button>CSV 내보내기</button></div>
+        <section class="admin-card"><div class="data-table wide" id="contentTable"><div class="data-row content head"><span>생성 시각</span><span>PC</span><span>제목</span><span>조건</span><span>사진</span><span>상태</span></div><div class="data-row content searchable" data-status="완료"><span>2026-07-26 15:12</span><strong>부산-01</strong><span>부산 사상구 교통사고 처리 절차 안내</span><span>사상구 / 사고 처리</span><span>2장</span><em class="badge success">완료</em></div><div class="data-row content searchable" data-status="생성 중"><span>2026-07-26 14:48</span><strong>부산-02</strong><span>사고 사진 개인정보 보호와 모자이크 방법</span><span>부산 / 개인정보</span><span>3장</span><em class="badge progress">생성 중</em></div><div class="data-row content searchable" data-status="완료"><span>2026-07-26 14:03</span><strong>야간-자동화</strong><span>사고 현장에서 확인해야 할 필수 정보</span><span>사상구 / 현장 대응</span><span>1장</span><em class="badge success">완료</em></div><div class="data-row content searchable" data-status="완료"><span>2026-07-26 12:40</span><strong>부산-01</strong><span>교통사고 사진을 안전하게 관리하는 방법</span><span>부산 / 모자이크</span><span>4장</span><em class="badge success">완료</em></div></div></section>
+      </section>
+
+      <section class="admin-page" data-admin-view="schedules">
+        <div class="page-tools"><p>스케줄은 중앙에서 배포하고 각 Windows PC의 실행 결과를 회수하는 구조를 가정합니다.</p><button class="primary-action">스케줄 추가</button></div>
+        <div class="schedule-list"><article><div><em class="badge success">활성</em><h3>부산 교통사고 블로그</h3><p>부산-01 · 매일 18:30 · 지역/키워드 전체 순환</p></div><div><small>다음 실행</small><strong>오늘 18:30</strong></div><button>편집</button></article><article><div><em class="badge success">활성</em><h3>지역 순환 카페 글</h3><p>부산-02 · 120분마다 · 검수 완료 사진만 사용</p></div><div><small>다음 실행</small><strong>16:42</strong></div><button>편집</button></article><article><div><em class="badge neutral">일시정지</em><h3>주말 사고예방 안내</h3><p>야간-자동화 · 토요일 09:00</p></div><div><small>다음 실행</small><strong>-</strong></div><button>편집</button></article></div>
+      </section>
+
+      <section class="admin-page" data-admin-view="prompts">
+        <div class="prompt-layout"><aside><button class="active"><strong>블로그 사고 안내 기본형</strong><span>3개 PC 사용 중</span></button><button><strong>카페 정보형</strong><span>2개 PC 사용 중</span></button><button><strong>사고예방 교육형</strong><span>일시정지</span></button><button class="add-prompt">+ 새 프롬프트</button></aside><section class="admin-card prompt-editor"><div class="admin-card-head"><div><span>PROMPT EDITOR</span><h2>블로그 사고 안내 기본형</h2></div><em class="badge success">자동 저장됨</em></div><label>프롬프트 내용<textarea>당신은 교통사고 처리 정보를 정확하고 이해하기 쉽게 안내하는 전문 작성자입니다.
+
+지역: {region}
+핵심 키워드: {keyword}
+
+제목과 본문은 기존 생성 이력과 중복되지 않도록 작성하고, 사진 개인정보 처리 여부를 확인한 뒤 결과를 생성하세요.</textarea></label><div class="variable-row"><span>{region}</span><span>{keyword}</span><span>{date}</span><span>{sequence}</span></div><div class="editor-actions"><button>변경 이력</button><button class="primary-action">전체 PC에 배포</button></div></section></div>
+      </section>
+
+      <section class="admin-page" data-admin-view="reviews">
+        <div class="page-tools"><div><button class="active">검수 대기 7</button><button>처리 완료 42</button></div><button>선택 항목 담당자 지정</button></div>
+        <div class="review-grid"><aside class="review-queue"><button class="active"><span class="review-thumb"></span><div><strong>accident_071.jpg</strong><small>부산-검수 · 낮은 확신 후보 1개</small></div></button><button><span class="review-thumb two"></span><div><strong>accident_074.jpg</strong><small>부산-02 · 탐지 결과 없음</small></div></button><button><span class="review-thumb three"></span><div><strong>accident_079.jpg</strong><small>야간-자동화 · 후보 2개</small></div></button></aside><section class="admin-card remote-review"><div class="admin-card-head"><div><span>REMOTE REVIEW</span><h2>accident_071.jpg</h2></div><em class="badge warning">검수 필요</em></div><div class="remote-image"><span class="remote-car"></span><span class="remote-box"></span><small>번호판 후보 · 신뢰도 0.62</small></div><div class="review-actions"><button>오탐으로 제거</button><button>원본 확대</button><button class="primary-action">확정 및 처리 완료</button></div></section></div>
+      </section>
+
+      <section class="admin-page" data-admin-view="logs">
+        <div class="page-tools"><div class="inline-filters"><select><option>전체 PC</option><option>부산-01</option><option>부산-02</option></select><select><option>전체 등급</option><option>오류</option><option>경고</option><option>정보</option></select></div><button>로그 다운로드</button></div>
+        <section class="admin-card log-card"><div class="log-row info searchable"><time>15:12:44</time><em>INFO</em><strong>부산-01</strong><span>생성 결과를 Google Drive 동기화 폴더에 저장했습니다.</span></div><div class="log-row info searchable"><time>14:48:08</time><em>INFO</em><strong>부산-02</strong><span>OpenAI 요청을 전송했습니다. model=gpt-4.1-mini</span></div><div class="log-row warning searchable"><time>14:31:22</time><em>WARN</em><strong>검수-PC</strong><span>번호판 후보 신뢰도가 자동 완료 기준보다 낮아 검수 대기로 이동했습니다.</span></div><div class="log-row info searchable"><time>14:03:18</time><em>INFO</em><strong>야간-자동화</strong><span>중복 검사 통과. 제목 해시와 본문 SHA-256을 기록했습니다.</span></div></section>
+      </section>
+    </main>
+  </div>
+  <div class="admin-toast" id="adminToast" role="status" aria-live="polite">최신 상태를 불러왔습니다.</div>
+  <script src="assets/admin.js"></script>
+</body>
+</html>
