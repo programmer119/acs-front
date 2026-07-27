@@ -1,0 +1,16 @@
+{
+  "install_steps": 4,
+  "progress_items": 4,
+  "only_one_default_open": true,
+  "default_open_step": "1",
+  "all_accordion_controls_match": true,
+  "bottom_download_removed": true,
+  "real_screenshots": 9,
+  "smartscreen_image_exists": true,
+  "download_link_present": true,
+  "sha_copy_controls_present": true,
+  "forbidden_phrases_absent": true,
+  "css_braces_balanced": true,
+  "step_label_css_present": true,
+  "accordion_js_present": true
+}

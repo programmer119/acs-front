@@ -130,15 +130,121 @@
 
 
 <section class="section install-guide-section" id="install-guide">
-<div class="container">
-<div class="section-heading install-heading"><div><span>WINDOWS INSTALL GUIDE</span><h2>Windows 보호 화면이 나오면 이렇게 실행하세요</h2></div><p>코드 서명이 아직 적용되지 않은 설치본에서는 Microsoft Defender SmartScreen 안내가 표시될 수 있습니다. 아래 두 단계로 실행할 수 있습니다.</p></div>
-<div class="install-guide-card">
-<div class="install-steps">
-<article><span>1</span><div><strong>추가 정보 선택</strong><p>파란색 Windows의 PC 보호 화면에서 왼쪽의 <b>추가 정보</b>를 누릅니다.</p></div></article>
-<article><span>2</span><div><strong>실행 선택</strong><p>앱 이름이 <code>AccidentContentStudio_Setup.exe</code>인지 확인한 뒤 <b>실행</b>을 누릅니다.</p></div></article>
-<aside><strong>왜 이 화면이 표시되나요?</strong><p>설치본에 아직 Microsoft 코드 서명 인증서가 적용되지 않았기 때문입니다. 다운로드 파일명과 제공처를 확인한 뒤 실행해 주세요.</p></aside>
+<div class="container install-guide-container">
+<div class="install-guide-intro">
+<div><span>4-STEP WINDOWS SETUP</span><h2>설치는 네 단계면 끝납니다</h2></div>
+<p>필요한 단계만 펼쳐서 확인하세요. 다운로드부터 최초 실행까지 순서대로 이어지도록 구성했습니다.</p>
 </div>
-<figure class="install-guide-image"><img alt="Windows SmartScreen에서 추가 정보를 누른 뒤 AccidentContentStudio_Setup.exe를 실행하는 방법" src="assets/windows-smartscreen-guide.png"/><figcaption>① 추가 정보 클릭 → ② 앱 이름 확인 → ③ 실행 클릭</figcaption></figure>
+
+<div class="install-progress" aria-label="설치 진행 단계">
+<div class="install-progress-item is-current" data-progress-step="1"><span>01</span><strong>다운로드</strong></div>
+<i aria-hidden="true"></i>
+<div class="install-progress-item" data-progress-step="2"><span>02</span><strong>파일 확인</strong></div>
+<i aria-hidden="true"></i>
+<div class="install-progress-item" data-progress-step="3"><span>03</span><strong>설치 실행</strong></div>
+<i aria-hidden="true"></i>
+<div class="install-progress-item" data-progress-step="4"><span>04</span><strong>첫 실행</strong></div>
+</div>
+
+<div class="install-accordion" data-install-accordion>
+<article class="install-step is-open" data-install-step="1">
+<button class="install-step-trigger" type="button" aria-expanded="true" aria-controls="install-panel-1" id="install-trigger-1">
+<span class="install-step-label"><small>STEP</small><b>01</b></span>
+<span class="install-step-title"><strong>설치 파일 다운로드</strong><small>버튼을 눌러 Windows 설치 파일을 저장합니다.</small></span>
+<span class="install-step-state">DOWNLOAD</span>
+<span class="install-step-toggle" aria-hidden="true"></span>
+</button>
+<div class="install-step-panel" id="install-panel-1" role="region" aria-labelledby="install-trigger-1">
+<div class="install-step-panel-inner install-download-layout">
+<div class="install-panel-copy">
+<span class="install-panel-kicker">READY TO INSTALL</span>
+<h3>다운로드가 끝나면 다음 단계로 이동하세요</h3>
+<p>브라우저의 다운로드 목록에서 파일이 정상적으로 저장됐는지 확인합니다. 설치 파일은 찾기 쉬운 다운로드 폴더에 두는 것이 좋습니다.</p>
+<ul class="install-check-list">
+<li>다운로드가 완료될 때까지 브라우저를 닫지 않습니다.</li>
+<li>파일명이 <code>AccidentContentStudio_Setup.exe</code>인지 확인합니다.</li>
+<li>다운로드가 차단되면 브라우저의 보존 또는 계속 옵션을 선택합니다.</li>
+</ul>
+</div>
+<a class="install-download-button" data-download-link download href="#"><span>Windows 프로그램 다운로드</span><strong>설치 파일 받기</strong><em>↓</em></a>
+</div>
+</div>
+</article>
+
+<div class="install-step-connector" aria-hidden="true"><span></span></div>
+
+<article class="install-step" data-install-step="2">
+<button class="install-step-trigger" type="button" aria-expanded="false" aria-controls="install-panel-2" id="install-trigger-2">
+<span class="install-step-label"><small>STEP</small><b>02</b></span>
+<span class="install-step-title"><strong>SHA-256 해시 및 파일 검증</strong><small>다운로드한 파일이 제공된 원본과 같은지 확인합니다.</small></span>
+<span class="install-step-state">VERIFY</span>
+<span class="install-step-toggle" aria-hidden="true"></span>
+</button>
+<div class="install-step-panel" id="install-panel-2" role="region" aria-labelledby="install-trigger-2" hidden>
+<div class="install-step-panel-inner verify-layout">
+<div class="install-panel-copy">
+<span class="install-panel-kicker">FILE INTEGRITY</span>
+<h3>한 번의 복사로 파일 무결성을 확인합니다</h3>
+<p>해시 확인은 필수 절차는 아니지만, 다운로드 파일이 중간에 손상되거나 바뀌지 않았는지 확인할 수 있는 가장 확실한 방법입니다.</p>
+<div class="hash-box"><div><small>SHA-256</small><code id="shaValue">b7bd7170a2746e52f476ef9768b2948a7d7a69f5e7f0bdd5ffdd17776614ac27</code></div><button id="copyHash" type="button">해시 복사</button></div>
+</div>
+<div class="verify-command-card">
+<div class="command-card-head"><span>PowerShell</span><b>파일 해시 확인</b></div>
+<code>Get-FileHash .\AccidentContentStudio_Setup.exe -Algorithm SHA256</code>
+<p>출력된 값이 왼쪽의 SHA-256과 같으면 다음 단계로 진행합니다.</p>
+</div>
+</div>
+</div>
+</article>
+
+<div class="install-step-connector" aria-hidden="true"><span></span></div>
+
+<article class="install-step" data-install-step="3">
+<button class="install-step-trigger" type="button" aria-expanded="false" aria-controls="install-panel-3" id="install-trigger-3">
+<span class="install-step-label"><small>STEP</small><b>03</b></span>
+<span class="install-step-title"><strong>설치 파일 실행</strong><small>Windows 보호 화면이 나오면 앱 이름을 확인하고 실행합니다.</small></span>
+<span class="install-step-state">INSTALL</span>
+<span class="install-step-toggle" aria-hidden="true"></span>
+</button>
+<div class="install-step-panel" id="install-panel-3" role="region" aria-labelledby="install-trigger-3" hidden>
+<div class="install-step-panel-inner smartscreen-layout">
+<div class="install-panel-copy">
+<span class="install-panel-kicker">WINDOWS SMARTSCREEN</span>
+<h3>보호 화면에서는 두 곳만 확인하면 됩니다</h3>
+<ol class="install-number-list">
+<li><span>1</span><div><strong>추가 정보</strong><p>파란색 Windows의 PC 보호 화면에서 <b>추가 정보</b>를 누릅니다.</p></div></li>
+<li><span>2</span><div><strong>앱 이름 확인</strong><p><code>AccidentContentStudio_Setup.exe</code>가 맞는지 확인합니다.</p></div></li>
+<li><span>3</span><div><strong>실행</strong><p>하단에 나타난 <b>실행</b> 버튼을 눌러 설치를 시작합니다.</p></div></li>
+</ol>
+<div class="install-note"><strong>왜 보호 화면이 나오나요?</strong><p>Windows가 처음 보는 설치 파일은 평판이 충분히 쌓일 때까지 안내 화면을 표시할 수 있습니다.</p></div>
+</div>
+<figure class="install-guide-image"><img alt="Windows SmartScreen에서 추가 정보를 누른 뒤 AccidentContentStudio_Setup.exe를 실행하는 방법" src="assets/windows-smartscreen-guide.png"/><figcaption>추가 정보 → 앱 이름 확인 → 실행</figcaption></figure>
+</div>
+</div>
+</article>
+
+<div class="install-step-connector" aria-hidden="true"><span></span></div>
+
+<article class="install-step" data-install-step="4">
+<button class="install-step-trigger" type="button" aria-expanded="false" aria-controls="install-panel-4" id="install-trigger-4">
+<span class="install-step-label"><small>STEP</small><b>04</b></span>
+<span class="install-step-title"><strong>설치 완료 및 첫 실행</strong><small>프로그램을 열고 저장 위치와 AI 엔진을 확인합니다.</small></span>
+<span class="install-step-state">START</span>
+<span class="install-step-toggle" aria-hidden="true"></span>
+</button>
+<div class="install-step-panel" id="install-panel-4" role="region" aria-labelledby="install-trigger-4" hidden>
+<div class="install-step-panel-inner finish-layout">
+<div class="install-finish-mark" aria-hidden="true">✓</div>
+<div class="install-panel-copy">
+<span class="install-panel-kicker">SETUP COMPLETE</span>
+<h3>이제 실제 작업을 시작할 수 있습니다</h3>
+<p>프로그램을 실행한 뒤 환경설정에서 저장 폴더와 사용할 AI 엔진을 확인합니다. 사진 모자이크와 콘텐츠 생성 기능은 왼쪽 작업 메뉴에서 바로 열 수 있습니다.</p>
+<div class="next-action-grid"><div><b>01</b><span>환경설정 확인</span></div><div><b>02</b><span>샘플 사진 검수</span></div><div><b>03</b><span>첫 콘텐츠 생성</span></div></div>
+</div>
+<a class="finish-screen-link" href="#screens"><span>실제 프로그램 화면 보기</span><strong>주요 기능 확인 →</strong></a>
+</div>
+</div>
+</article>
 </div>
 </div>
 </section>

@@ -5,6 +5,7 @@
   const copyButton = document.getElementById('copyHash');
   if (hashElement && copyButton) {
     copyButton.addEventListener('click', async () => {
+      const originalLabel = copyButton.textContent;
       const value = hashElement.textContent.trim();
       try {
         await navigator.clipboard.writeText(value);
@@ -19,7 +20,7 @@
         input.remove();
       }
       copyButton.textContent = '복사 완료';
-      window.setTimeout(() => { copyButton.textContent = 'SHA-256 복사'; }, 1600);
+      window.setTimeout(() => { copyButton.textContent = originalLabel; }, 1600);
     });
   }
 
@@ -38,6 +39,53 @@
       link.title = 'assets/config.js의 downloadUrl을 설정해 주세요.';
       link.addEventListener('click', (event) => event.preventDefault());
     }
+  });
+
+
+  const installSteps = [...document.querySelectorAll('[data-install-step]')];
+  const installProgressItems = [...document.querySelectorAll('[data-progress-step]')];
+
+  const setInstallStep = (stepNumber, allowCollapse = true) => {
+    const selected = installSteps.find((step) => Number(step.dataset.installStep) === stepNumber);
+    if (!selected) return;
+
+    const wasOpen = selected.classList.contains('is-open');
+    installSteps.forEach((step) => {
+      const trigger = step.querySelector('.install-step-trigger');
+      const panel = step.querySelector('.install-step-panel');
+      const shouldOpen = step === selected && !(allowCollapse && wasOpen);
+      step.classList.toggle('is-open', shouldOpen);
+      trigger?.setAttribute('aria-expanded', String(shouldOpen));
+      if (panel) panel.hidden = !shouldOpen;
+    });
+
+    installProgressItems.forEach((item) => {
+      const itemNumber = Number(item.dataset.progressStep);
+      item.classList.toggle('is-current', itemNumber === stepNumber);
+      item.classList.toggle('is-done', itemNumber < stepNumber);
+    });
+  };
+
+  installSteps.forEach((step) => {
+    const trigger = step.querySelector('.install-step-trigger');
+    trigger?.addEventListener('click', () => setInstallStep(Number(step.dataset.installStep)));
+  });
+
+  installProgressItems.forEach((item) => {
+    item.setAttribute('role', 'button');
+    item.setAttribute('tabindex', '0');
+    const openFromProgress = () => {
+      const stepNumber = Number(item.dataset.progressStep);
+      setInstallStep(stepNumber, false);
+      document.querySelector(`[data-install-step="${stepNumber}"]`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    };
+    item.addEventListener('click', openFromProgress);
+    item.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openFromProgress();
+      }
+    });
   });
 
 
