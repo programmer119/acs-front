@@ -1351,3 +1351,108 @@ body:has(.screenshot-dialog[open]) { overflow: hidden; }
   .install-step-connector { height: 27px; margin-left: 26px; }
   .smartscreen-layout .install-guide-image { border-radius: 12px; }
 }
+
+
+/* R34.3 screenshot section refinement */
+.product-gallery-section { padding-top: 88px; }
+.product-gallery-section > .container { width: min(calc(100% - 96px), 1440px); }
+.screen-flow { gap: 28px; margin-top: 6px; }
+.screen-story-copy { min-height: 118px; margin: 0 0 18px; }
+.mosaic-showcase { margin-top: 56px; }
+.gallery-heading { margin-top: 56px; }
+@media (max-width: 1200px) {
+  .product-gallery-section > .container { width: min(calc(100% - 48px), 1440px); }
+}
+@media (max-width: 720px) {
+  .product-gallery-section { padding-top: 64px; }
+  .product-gallery-section > .container { width: min(calc(100% - 24px), 1440px); }
+}
+
+
+/* R34.4 product presentation and premium content width */
+:root { --container: 1440px; }
+.container,
+.hero .container {
+  width: min(calc(100% - 96px), 1440px);
+}
+.section { padding-block: 112px; }
+.hero {
+  padding-top: 112px;
+  padding-bottom: 118px;
+}
+.hero-copy { max-width: 1180px; }
+.hero h1 {
+  max-width: 1080px;
+  font-size: clamp(60px, 5.7vw, 94px);
+  line-height: 1.02;
+  letter-spacing: -.052em;
+}
+.hero-lead {
+  max-width: 900px;
+  font-size: clamp(20px, 1.65vw, 25px);
+  line-height: 1.72;
+}
+.hero-actions .button-hero { width: min(100%, 660px); }
+.hero-meta { max-width: 900px; }
+.section-heading { max-width: 1260px; margin-inline: auto; }
+.section-heading > div { max-width: 790px; }
+.section-heading h2 {
+  font-size: clamp(34px, 3.35vw, 52px);
+  line-height: 1.18;
+}
+.section-heading > p {
+  max-width: 430px;
+  font-size: 16px;
+  line-height: 1.78;
+}
+.product-gallery-section > .container { width: min(calc(100% - 96px), 1360px); }
+.screen-flow { gap: 34px; }
+.screen-story-copy { min-height: 108px; }
+.mosaic-showcase,
+.gallery-heading,
+.screenshot-gallery { max-width: 1360px; margin-inline: auto; }
+.feature-grid {
+  max-width: 1320px;
+  margin-inline: auto;
+  gap: 22px;
+}
+.feature-grid article {
+  min-height: 240px;
+  padding: 30px;
+  border-radius: 18px;
+}
+.feature-grid b { margin-bottom: 36px; }
+.feature-grid h3 { font-size: 20px; }
+.feature-grid p { font-size: 15px; }
+.flow-line {
+  max-width: 1320px;
+  margin-inline: auto;
+  gap: 0;
+}
+.flow-line > div {
+  min-height: 200px;
+  padding: 29px;
+  border-radius: 17px;
+}
+.install-guide-section > .container { max-width: 1320px; }
+.site-footer .container { max-width: 1320px; }
+@media (max-width: 1200px) {
+  .container,
+  .hero .container,
+  .product-gallery-section > .container {
+    width: min(calc(100% - 56px), 1440px);
+  }
+  .section { padding-block: 92px; }
+  .hero { padding-block: 92px 100px; }
+}
+@media (max-width: 720px) {
+  .container,
+  .hero .container,
+  .product-gallery-section > .container {
+    width: min(calc(100% - 28px), 1440px);
+  }
+  .section { padding-block: 72px; }
+  .hero { padding-block: 72px 78px; }
+  .hero h1 { font-size: clamp(40px, 13vw, 62px); }
+  .section-heading h2 { font-size: clamp(30px, 9vw, 42px); }
+}
