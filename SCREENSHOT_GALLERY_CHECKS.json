@@ -1,0 +1,9 @@
+{
+  "id=\"screens\"": true,
+  "assets/screenshots/01-content-create.png": true,
+  "assets/screenshots/09-command-search.png": true,
+  "id=\"screenshotDialog\"": true,
+  "data-download-link": true,
+  "bottom_download_absent": true,
+  "all_images_present": true
+}

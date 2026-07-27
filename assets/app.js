@@ -40,6 +40,49 @@
     }
   });
 
+
+  const screenshotButtons = [...document.querySelectorAll('.screenshot-open')];
+  const screenshotDialog = document.getElementById('screenshotDialog');
+  const screenshotDialogImage = document.getElementById('screenshotDialogImage');
+  const screenshotDialogTitle = document.getElementById('screenshotDialogTitle');
+  const screenshotDialogDescription = document.getElementById('screenshotDialogDescription');
+  const screenshotDialogCount = document.getElementById('screenshotDialogCount');
+  const screenshotDialogClose = document.getElementById('screenshotDialogClose');
+  const screenshotPrev = document.getElementById('screenshotPrev');
+  const screenshotNext = document.getElementById('screenshotNext');
+  let screenshotIndex = 0;
+
+  const showScreenshot = (index) => {
+    if (!screenshotButtons.length || !screenshotDialogImage) return;
+    screenshotIndex = (index + screenshotButtons.length) % screenshotButtons.length;
+    const button = screenshotButtons[screenshotIndex];
+    const image = button.querySelector('img');
+    screenshotDialogImage.src = button.dataset.full || image?.src || '';
+    screenshotDialogImage.alt = image?.alt || '';
+    if (screenshotDialogTitle) screenshotDialogTitle.textContent = button.dataset.title || '프로그램 화면';
+    if (screenshotDialogDescription) screenshotDialogDescription.textContent = button.dataset.description || '';
+    if (screenshotDialogCount) screenshotDialogCount.textContent = `${screenshotIndex + 1} / ${screenshotButtons.length}`;
+  };
+
+  if (screenshotDialog && typeof screenshotDialog.showModal === 'function') {
+    screenshotButtons.forEach((button, index) => button.addEventListener('click', () => {
+      showScreenshot(index);
+      screenshotDialog.showModal();
+    }));
+    screenshotDialogClose?.addEventListener('click', () => screenshotDialog.close());
+    screenshotPrev?.addEventListener('click', () => showScreenshot(screenshotIndex - 1));
+    screenshotNext?.addEventListener('click', () => showScreenshot(screenshotIndex + 1));
+    screenshotDialog.addEventListener('click', (event) => {
+      if (event.target === screenshotDialog) screenshotDialog.close();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (!screenshotDialog.open) return;
+      if (event.key === 'ArrowLeft') showScreenshot(screenshotIndex - 1);
+      if (event.key === 'ArrowRight') showScreenshot(screenshotIndex + 1);
+    });
+  }
+
+
   const observer = 'IntersectionObserver' in window ? new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -53,6 +96,6 @@
   }, { threshold: 0.08 }) : null;
 
   if (observer && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.querySelectorAll('.feature-grid article, .flow-line > div, .install-guide-card, .download-card').forEach((element) => observer.observe(element));
+    document.querySelectorAll('.screen-story-card, .mosaic-showcase, .screenshot-card, .feature-grid article, .flow-line > div, .install-guide-card').forEach((element) => observer.observe(element));
   }
 })();
