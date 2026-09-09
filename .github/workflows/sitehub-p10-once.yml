@@ -1,4 +1,4 @@
-name: Integrate SiteHub p10 once
+name: Complete SiteHub SearchOps p10 once
 on:
   push:
     branches: [main]
@@ -10,17 +10,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Patch initial head
+      - name: Complete SearchOps contract in exact Pages root
         run: |
+          set -Eeuo pipefail
           python3 - <<'PY'
           from pathlib import Path
           p=Path('index.html'); h=p.read_text(encoding='utf-8')
-          if 'data-sitehub-project="p10"' in h: raise SystemExit(0)
-          desc='Windows 데스크톱 AI 콘텐츠 자동 생성 및 사고사진 개인정보 모자이크 프로그램'
-          block='''\n<link rel="canonical" href="https://acs.suaveforge.com/"/>\n<meta property="og:title" content="사고 콘텐츠 스튜디오 | Windows AI 콘텐츠 자동화"/>\n<meta property="og:description" content="'''+desc+'''"/>\n<meta property="og:image" content="https://sitehub.suaveforge.com/assets/namecard-default.png"/>\n<meta property="og:url" content="https://acs.suaveforge.com/"/>\n<meta property="og:site_name" content="SuaveForge"/>\n<meta name="twitter:card" content="summary_large_image"/>\n<script async src="https://sitehub.suaveforge.com/analytics-loader.js" data-sitehub-project="p10"></script>\n'''
-          h=h.replace('</head>',block+'</head>',1); p.write_text(h,encoding='utf-8')
+          marker='SITEHUB-SEARCHOPS-P10'
+          if marker not in h:
+              schema='''\n<!-- SITEHUB-SEARCHOPS-P10 -->\n<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","name":"SuaveForge","url":"https://suaveforge.com/"},{"@type":"WebApplication","name":"사고 콘텐츠 스튜디오","url":"https://acs.suaveforge.com/","description":"Windows 데스크톱 AI 콘텐츠 자동 생성 및 사고사진 개인정보 모자이크 프로그램","publisher":{"@type":"Organization","name":"SuaveForge","url":"https://suaveforge.com/"}}]}</script>\n'''
+              h=h.replace('</head>',schema+'</head>',1)
+              p.write_text(h,encoding='utf-8')
+          Path('robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: https://acs.suaveforge.com/sitemap.xml\n',encoding='utf-8')
+          Path('sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://acs.suaveforge.com/</loc></url></urlset>\n',encoding='utf-8')
           PY
+          grep -q 'SITEHUB-SEARCHOPS-P10' index.html
+          grep -q 'application/ld+json' index.html
+          grep -q 'Sitemap: https://acs.suaveforge.com/sitemap.xml' robots.txt
+          grep -q '<loc>https://acs.suaveforge.com/</loc>' sitemap.xml
           git config user.name 'SuaveForge SiteHub'
           git config user.email '53187583+programmer119@users.noreply.github.com'
-          git add index.html
-          git diff --cached --quiet || (git commit -m 'Integrate SiteHub p10' && git push)
+          git add index.html robots.txt sitemap.xml
+          git diff --cached --quiet || (git commit -m 'Complete SiteHub SearchOps p10' && git push)
